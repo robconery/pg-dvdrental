@@ -17,13 +17,15 @@ namespace Membership
     {
 
       var db = new CommandRunner("dvds");
-      var q = new Commands.Actors.AddBatchOfActors(db);
-      var actor1 = new Actor { First = "Joe", Last = "Tonks" };
-      var actor2 = new Actor { First = "Joe", Last = "Biff" };
-      var actor3 = new Actor { First = "Jolene", Last = "Silidkdk" };
-      q.Actors = new Actor[]{actor1, actor2, actor3};
-      var result = q.Execute();
-      Console.WriteLine("There were {0} actors added", result);
+      var q = new Queries.Actors.ActorQuery(db);
+      q.ActorId = 12;
+      var actor = q.Execute();
+
+      Console.WriteLine("it's {0}", actor.Fullname);
+      foreach (var f in actor.Films)
+      {
+        Console.WriteLine(f.Title);
+      }
       Console.Read();
     }
   }
