@@ -9,23 +9,15 @@ using System.Threading.Tasks;
 
 namespace Membership
 {
-
-
   class Program
   {
     static void Main(string[] args)
     {
-
       var db = new CommandRunner("dvds");
-      var q = new Queries.Actors.ActorQuery(db);
-      q.ActorId = 12;
-      var actor = q.Execute();
-
-      Console.WriteLine("it's {0}", actor.Fullname);
-      foreach (var f in actor.Films)
-      {
-        Console.WriteLine(f.Title);
-      }
+      var salesOrder = new SalesOrder();
+      salesOrder.Items.Add(new LineItem { SKU = "Ducky", Price = 12.00M, Name = "Little Duck Buddy" });
+      var cmd = new Commands.Sales.SaveSalesOrder(db).Execute(salesOrder);
+      Console.WriteLine(cmd);
       Console.Read();
     }
   }
