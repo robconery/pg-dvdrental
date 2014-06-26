@@ -35,7 +35,14 @@ namespace Membership.DataAccess
           if (rdr.GetName(i).Equals(prop.Name, StringComparison.InvariantCultureIgnoreCase))
           {
             var val = rdr.GetValue(i);
-            prop.SetValue(item, val);
+            if (val != DBNull.Value)
+            {
+              prop.SetValue(item, val);
+            }
+            else
+            {
+              prop.SetValue(item, null);
+            }
           }
         }
 

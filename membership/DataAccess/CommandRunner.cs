@@ -26,7 +26,7 @@ namespace Membership.DataAccess
     /// </summary>
     public T ExecuteSingle<T>(string sql, params object[] args) where T : new()
     {
-      return this.Execute<T>(sql, args).First();
+      return this.Execute<T>(sql, args).FirstOrDefault();
     }
     /// <summary>
     /// Returns a simple ExpandoObject with all results of a query

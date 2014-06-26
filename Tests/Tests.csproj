@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="Helpers\Loader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="shwartz.cs" />
+    <Compile Include="UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
